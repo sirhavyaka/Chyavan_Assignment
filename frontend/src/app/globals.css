@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 80px;
+    --category-bar-height: 80px;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary antialiased font-sans m-0 p-0;
+  }
+}
+
+@layer components {
+  /* Reusable button utilities */
+  .btn {
+    @apply inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3 cursor-pointer transition-all duration-150 border text-sm select-none;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-[#E61E4D] via-[#E31C5F] to-[#D70466] text-white border-transparent hover:from-[#D11C4A] hover:via-[#C81D57] hover:to-[#BD035E] shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-bg-primary text-text-primary border-text-primary hover:bg-bg-secondary;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-text-primary border-text-primary hover:bg-bg-secondary;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent border-transparent hover:bg-bg-secondary text-text-primary;
+  }
+
+  .btn-sm {
+    @apply px-3.5 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  .btn-block {
+    @apply w-full;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full border border-border rounded-lg px-3.5 py-2.5 text-sm text-text-primary bg-bg-primary outline-none transition-colors duration-150 focus:border-text-primary;
+  }
+
+  .input-group {
+    @apply flex flex-col gap-1.5 mb-4;
+  }
+
+  .input-group label {
+    @apply text-xs font-bold uppercase tracking-wider text-text-primary;
+  }
+
+  /* Container classes */
+  .container {
+    @apply max-w-[1120px] mx-auto px-6 md:px-10 lg:px-20;
+  }
+
+  .container-wide {
+    @apply max-w-[1760px] mx-auto px-6 md:px-10 lg:px-20;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-bg-tertiary rounded-md animate-pulse;
+    background: linear-gradient(90deg, #ebebeb 25%, #f5f5f5 50%, #ebebeb 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply border-0 border-t border-border my-6;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-pill text-xs font-bold select-none;
+  }
+
+  .badge-superhost {
+    @apply bg-bg-secondary text-text-primary border border-border;
+  }
+
+  /* Modal overlay and content */
+  .modal-overlay {
+    @apply fixed inset-0 z-[1000] bg-black/50 flex items-center justify-center p-4;
+    animation: fadeIn 0.15s ease-out forwards;
+  }
+
+  .modal-content {
+    @apply bg-bg-primary rounded-2xl max-h-[90vh] overflow-y-auto shadow-xl flex flex-col w-full max-w-lg;
+    animation: scaleUp 0.15s ease-out forwards;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between p-6 border-b border-border sticky top-0 bg-bg-primary z-10;
+  }
+
+  .modal-close {
+    @apply w-8 h-8 rounded-full border border-border flex items-center justify-center text-sm cursor-pointer hover:bg-bg-secondary transition-colors;
+  }
+
+  .modal-body {
+    @apply p-6 flex-1;
+  }
+
+  /* Toast Container */
+  .toast-container {
+    @apply fixed bottom-6 right-6 z-[2000] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none;
+  }
+
+  .toast {
+    @apply pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl bg-bg-primary text-text-primary shadow-xl border border-border text-sm cursor-pointer transition-transform hover:scale-[1.02];
+    animation: slideIn 0.2s ease-out forwards;
+  }
+
+  .toast-success {
+    @apply border-l-4 border-l-[#2E7D32];
+  }
+
+  .toast-error {
+    @apply border-l-4 border-l-[#C62828];
+  }
+
+  .toast-info {
+    @apply border-l-4 border-l-[#1565C0];
+  }
+
+  /* Grid layout for cards */
+  .listing-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hide scrollbar for category bar while keeping scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
