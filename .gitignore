@@ -2,6 +2,3 @@
 *.db
 *.sqlite
 *.sqlite3
-
-# Seed Scripts
-backend/scripts/
