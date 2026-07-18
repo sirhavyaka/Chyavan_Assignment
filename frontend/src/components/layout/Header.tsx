@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, Suspense } from "react";
+import { GoGlobe } from "react-icons/go";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
@@ -67,10 +68,7 @@ function HeaderContent() {
   return (
     <header className="sticky top-0 z-50 bg-bg-primary border-b border-border transition-all">
       <div className="max-w-[1760px] mx-auto px-4 md:px-10 lg:px-20 py-3 md:py-4 flex flex-col gap-2 md:gap-4">
-
-        {/* ========== MOBILE LAYOUT (< md) ========== */}
         <div className="md:hidden flex flex-col gap-3">
-          {/* Mobile Row 1: Logo + Theme + User Menu */}
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-1.5 text-decoration-none shrink-0">
               <Image src="/airbnb.png" alt="Logo" loading="eager" width={28} height={28} />
@@ -196,9 +194,7 @@ function HeaderContent() {
               Become a host
             </Link>
             <button onClick={() => setGlobeMenuOpen(true)} className="hidden sm:flex w-10 h-10 rounded-full items-center justify-center hover:bg-bg-secondary transition-colors text-text-primary cursor-pointer">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor">
-                <path d="M16 1C7.71 1 1 7.71 1 16s6.71 15 15 15 15-6.71 15-15S24.29 1 16 1zm11.93 13h-4.08c-.28-3.04-1.29-5.83-2.88-8.13 3.32 1.48 5.86 4.45 6.96 8.13zM16 3.03c1.78 2.29 3 5.3 3.38 8.97h-6.76c.38-3.67 1.6-6.68 3.38-8.97zM4.07 14h4.08c.28-3.04 1.29-5.83 2.88-8.13-3.32 1.48-5.86 4.45-6.96 8.13zM4.07 18c1.1 3.68 3.64 6.65 6.96 8.13-1.59-2.3-2.6-5.09-2.88-8.13H4.07zm9.85 10.97c-1.78-2.29-3-5.3-3.38-8.97h6.76c-.38 3.67-1.6 6.68-3.38 8.97zM18.99 18H13.01c-.13-1.32-.2-2.65-.2-4s.07-2.68.2-4h5.98c.13 1.32.2 2.65.2 4s-.07 2.68-.2 4zm1.96 8.13c1.59-2.3 2.6-5.09 2.88-8.13h4.08c-1.1 3.68-3.64 6.65-6.96 8.13z" />
-              </svg>
+              <GoGlobe className="text-text-primary rounded-full" size={20} />
             </button>
             <button onClick={toggleTheme} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-bg-secondary transition-all text-text-primary cursor-pointer active:scale-95 shrink-0" aria-label="Toggle theme" id="theme-toggle">
               {theme === "dark" ? (
@@ -307,7 +303,6 @@ function HeaderContent() {
       {/* Mobile Full-Screen Search Modal */}
       {searchOpen && (
         <div className="md:hidden fixed inset-0 z-[1000] bg-bg-secondary flex flex-col animate-fadeIn">
-          {/* Modal Top: Category tabs + Close */}
           <div className="flex items-center justify-between px-4 pt-4 pb-2">
             <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
               {tabs.filter(t => t.key !== "all").map((tab) => (
