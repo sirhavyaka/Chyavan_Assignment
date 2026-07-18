@@ -6,10 +6,27 @@
   :root {
     --header-height: 80px;
     --category-bar-height: 80px;
+    --color-text-primary: #222222;
+    --color-text-secondary: #717171;
+    --color-border: #DDDDDD;
+    --color-border-dark: #B0B0B0;
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F7F7F7;
+    --color-bg-tertiary: #EBEBEB;
+  }
+
+  .dark {
+    --color-text-primary: #F7F7F7;
+    --color-text-secondary: #A0A0A0;
+    --color-border: #2D2D2D;
+    --color-border-dark: #444444;
+    --color-bg-primary: #121212;
+    --color-bg-secondary: #1F1F1F;
+    --color-bg-tertiary: #2D2D2D;
   }
 
   body {
-    @apply bg-bg-primary text-text-primary antialiased font-sans m-0 p-0;
+    @apply bg-bg-primary text-text-primary antialiased font-sans m-0 p-0 transition-colors duration-200;
   }
 }
 
@@ -72,7 +89,7 @@
   /* Skeleton Loader */
   .skeleton {
     @apply bg-bg-tertiary rounded-md animate-pulse;
-    background: linear-gradient(90deg, #ebebeb 25%, #f5f5f5 50%, #ebebeb 75%);
+    background: linear-gradient(90deg, var(--color-bg-tertiary) 25%, var(--color-bg-secondary) 50%, var(--color-bg-tertiary) 75%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s infinite;
   }

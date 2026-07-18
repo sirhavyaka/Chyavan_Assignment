@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,17 +18,17 @@ const config: Config = {
         },
         primary: "#FF385C",
         text: {
-          primary: "#222222",
-          secondary: "#717171",
+          primary: "var(--color-text-primary)",
+          secondary: "var(--color-text-secondary)",
         },
         border: {
-          DEFAULT: "#DDDDDD",
-          dark: "#B0B0B0",
+          DEFAULT: "var(--color-border)",
+          dark: "var(--color-border-dark)",
         },
         bg: {
-          primary: "#FFFFFF",
-          secondary: "#F7F7F7",
-          tertiary: "#EBEBEB",
+          primary: "var(--color-bg-primary)",
+          secondary: "var(--color-bg-secondary)",
+          tertiary: "var(--color-bg-tertiary)",
         },
       },
       fontFamily: {

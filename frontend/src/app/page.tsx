@@ -57,14 +57,14 @@ function SectionCarousel({
         <div className="flex items-center gap-2">
           <button
             onClick={() => scroll("left")}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-text-primary hover:scale-105 hover:shadow-sm transition-all bg-white disabled:opacity-30 cursor-pointer"
+            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-text-primary hover:scale-105 hover:shadow-sm transition-all bg-bg-primary disabled:opacity-30 cursor-pointer"
             aria-label="Scroll left"
           >
             ‹
           </button>
           <button
             onClick={() => scroll("right")}
-            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-text-primary hover:scale-105 hover:shadow-sm transition-all bg-white disabled:opacity-30 cursor-pointer"
+            className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-text-primary hover:scale-105 hover:shadow-sm transition-all bg-bg-primary disabled:opacity-30 cursor-pointer"
             aria-label="Scroll right"
           >
             ›
@@ -96,12 +96,12 @@ function SectionCarousel({
               onClick={onSeeAll}
               className="w-[210px] sm:w-[225px] md:w-[235px] lg:w-[242px] flex-shrink-0 snap-start flex flex-col items-center justify-start cursor-pointer group pt-0.5"
             >
-              <div className="aspect-[1/0.95] w-full rounded-2xl border border-border bg-white hover:shadow-md transition-all flex flex-col items-center justify-center p-6 shadow-sm">
+              <div className="aspect-[1/0.95] w-full rounded-2xl border border-border bg-bg-primary hover:shadow-md transition-all flex flex-col items-center justify-center p-6 shadow-sm">
                 <div className="relative w-24 h-20 mb-4 flex items-center justify-center">
                   {items.slice(0, 3).map((l, i) => (
                     <div
                       key={i}
-                      className={`absolute w-14 h-14 rounded-xl overflow-hidden border-2 border-white shadow-md transition-transform group-hover:scale-105 ${
+                      className={`absolute w-14 h-14 rounded-xl overflow-hidden border-2 border-bg-primary shadow-md transition-transform group-hover:scale-105 ${
                         i === 0
                           ? "-rotate-12 -translate-x-5 -translate-y-1 z-0"
                           : i === 1

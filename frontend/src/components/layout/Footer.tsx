@@ -23,7 +23,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#F7F7F7] border-t border-border mt-16 text-text-primary">
+    <footer className="bg-bg-secondary border-t border-border mt-16 text-text-primary">
       <div className="max-w-[1760px] mx-auto pt-12 pb-6 px-6 md:px-10 lg:px-20">
         {/* Inspiration for future getaways (Image 3) */}
         <div className="pb-12 border-b border-border">
@@ -31,22 +31,22 @@ export default function Footer() {
           
           {/* Tabs */}
           <div className="flex items-center gap-6 md:gap-8 border-b border-border mb-8 overflow-x-auto scrollbar-none text-sm font-semibold">
-            <button className="pb-3 border-b-2 border-black text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-text-primary text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Popular
             </button>
-            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Arts &amp; culture
             </button>
-            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Beach
             </button>
-            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Mountains
             </button>
-            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Outdoors
             </button>
-            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-black whitespace-nowrap cursor-pointer bg-transparent">
+            <button className="pb-3 border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap cursor-pointer bg-transparent">
               Things to do
             </button>
           </div>

@@ -111,15 +111,15 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
   const reviewFilterChips = ["Overall rating", "Cleanliness", "Accuracy", "Check-in", "Communication", "Location", "Value"];
 
   return (
-    <div className="bg-white">
+    <div className="bg-bg-primary">
       {/* 1. Sticky Top Anchor Navigation (Image 3) */}
-      <div className="sticky top-[var(--header-height)] z-40 bg-white/95 backdrop-blur-md border-b border-border transition-all">
+      <div className="sticky top-[var(--header-height)] z-40 bg-bg-primary/95 backdrop-blur-md border-b border-border transition-all">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-20 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8 text-sm font-semibold text-text-primary">
-            <a href="#photos" className="hover:text-black hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-black">Photos</a>
-            <a href="#amenities" className="hover:text-black hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-black">Amenities</a>
-            <a href="#reviews" className="hover:text-black hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-black">Reviews</a>
-            <a href="#location" className="hover:text-black hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-black">Location</a>
+            <a href="#photos" className="hover:text-text-primary hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-text-primary">Photos</a>
+            <a href="#amenities" className="hover:text-text-primary hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-text-primary">Amenities</a>
+            <a href="#reviews" className="hover:text-text-primary hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-text-primary">Reviews</a>
+            <a href="#location" className="hover:text-text-primary hover:underline transition-colors py-5 border-b-2 border-transparent hover:border-text-primary">Location</a>
           </div>
           <div className="hidden sm:flex items-center gap-4">
             <div className="text-right">
@@ -175,7 +175,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
             ))}
           </div>
           <button
-            className="absolute bottom-5 right-5 px-4 py-2 bg-white/95 backdrop-blur-sm border border-black rounded-lg text-sm font-semibold cursor-pointer transition-all hover:scale-105 shadow-md flex items-center gap-2 text-text-primary"
+            className="absolute bottom-5 right-5 px-4 py-2 bg-bg-primary/95 backdrop-blur-sm border border-border-dark rounded-lg text-sm font-semibold cursor-pointer transition-all hover:scale-105 shadow-md flex items-center gap-2 text-text-primary"
             onClick={() => setShowAllPhotos(true)}
           >
             <span>:::</span>
@@ -186,10 +186,10 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
         {/* All Photos Modal */}
         {showAllPhotos && (
           <div className="modal-overlay z-50" onClick={() => setShowAllPhotos(false)}>
-            <div className="modal-content !max-w-5xl bg-white p-6 rounded-2xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content !max-w-5xl bg-bg-primary p-6 rounded-2xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center pb-4 mb-6 border-b border-border">
                 <button className="text-xl font-bold cursor-pointer bg-transparent border-none" onClick={() => setShowAllPhotos(false)}>✕</button>
-                <span className="font-bold text-lg">All photos</span>
+                <span className="font-bold text-lg text-text-primary">All photos</span>
                 <span />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -218,14 +218,14 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                   <div className="flex items-center gap-1.5 mt-2 text-base font-bold text-text-primary">
                     <span>★ {formatRating(listing.rating)}</span>
                     <span>·</span>
-                    <a href="#reviews" className="underline hover:text-black font-semibold">{listing.review_count} {pluralize(listing.review_count, "review")}</a>
+                    <a href="#reviews" className="underline hover:text-text-primary font-semibold">{listing.review_count} {pluralize(listing.review_count, "review")}</a>
                   </div>
                 )}
               </div>
               <div className="flex flex-col items-center shrink-0">
-                <div className="w-14 h-14 rounded-full overflow-hidden relative bg-bg-secondary shadow-md border-2 border-white">
+                <div className="w-14 h-14 rounded-full overflow-hidden relative bg-bg-secondary shadow-md border-2 border-bg-primary">
                   <img src={listing.host.avatar_url} alt={listing.host.name} className="w-full h-full object-cover" />
-                  {listing.host.is_superhost && <span className="absolute bottom-0 right-0 bg-white rounded-full p-0.5 text-xs shadow-sm" title="Superhost">⭐</span>}
+                  {listing.host.is_superhost && <span className="absolute bottom-0 right-0 bg-bg-primary rounded-full p-0.5 text-xs shadow-sm" title="Superhost">⭐</span>}
                 </div>
                 <span className="text-xs font-semibold text-text-secondary mt-1.5">Hosted by {listing.host.name.split(" ")[0]}</span>
               </div>
@@ -233,7 +233,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
 
             {/* Guest Favorite Wreath Banner (Image 3 & Image 1) */}
             {listing.is_guest_favorite && (
-              <div className="border border-border rounded-2xl p-6 bg-[#F8F9FA] shadow-sm">
+              <div className="border border-border rounded-2xl p-6 bg-bg-secondary shadow-sm">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="flex items-center gap-3 text-center md:text-left">
                     <span className="text-4xl">🌿</span>
@@ -243,7 +243,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                     </div>
                     <span className="text-4xl">🌿</span>
                   </div>
-                  <div className="flex items-center gap-6 shrink-0 bg-white px-5 py-3 rounded-xl border border-border shadow-xs">
+                  <div className="flex items-center gap-6 shrink-0 bg-bg-primary px-5 py-3 rounded-xl border border-border shadow-xs">
                     <div className="text-center">
                       <strong className="text-2xl font-black block text-text-primary">{formatRating(listing.rating)}</strong>
                       <span className="text-[10px] uppercase font-bold tracking-wider text-text-secondary">Rating</span>
@@ -298,7 +298,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
               <h2 className="text-xl font-bold mb-4 text-text-primary">Where you&apos;ll sleep</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {Array.from({ length: listing.bedrooms }).map((_, i) => (
-                  <div key={i} className="border border-border rounded-xl p-5 bg-white shadow-xs">
+                  <div key={i} className="border border-border rounded-xl p-5 bg-bg-primary shadow-xs">
                     <div className="text-3xl mb-3">🛏️</div>
                     <strong className="text-base font-semibold block text-text-primary">Bedroom {i + 1}</strong>
                     <span className="text-sm text-text-secondary">{i === 0 ? "1 queen bed" : "2 double beds"}</span>
@@ -320,7 +320,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
               </div>
               {listing.amenities.length > 10 && !showAllAmenities && (
                 <button
-                  className="mt-6 px-6 py-3 border border-black rounded-lg font-semibold text-sm hover:bg-bg-secondary transition-colors cursor-pointer bg-white text-text-primary"
+                  className="mt-6 px-6 py-3 border border-text-primary rounded-lg font-semibold text-sm hover:bg-bg-secondary transition-colors cursor-pointer bg-bg-primary text-text-primary"
                   onClick={() => setShowAllAmenities(true)}
                 >
                   Show all {listing.amenities.length} amenities
@@ -332,19 +332,19 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
             <div className="pb-8 border-b border-border" id="location">
               <h2 className="text-xl font-bold mb-2 text-text-primary">Where you&apos;ll be</h2>
               <p className="text-base text-text-secondary mb-6">{formatLocation(listing.city, listing.state, listing.country)}</p>
-              <div className="w-full h-[320px] bg-[#EAE8E4] rounded-2xl overflow-hidden relative flex flex-col items-center justify-center gap-3 border border-border shadow-inner">
+              <div className="w-full h-[320px] bg-bg-secondary rounded-2xl overflow-hidden relative flex flex-col items-center justify-center gap-3 border border-border shadow-inner">
                 <div className="w-16 h-16 rounded-full bg-[#FF385C] text-white flex items-center justify-center text-2xl shadow-xl animate-bounce">
                   🏠
                 </div>
                 <strong className="text-lg font-bold text-text-primary">{listing.city}, {listing.state}</strong>
-                <span className="text-xs text-text-secondary bg-white/90 px-4 py-1.5 rounded-pill shadow-sm">Exact location provided after booking</span>
+                <span className="text-xs text-text-secondary bg-bg-primary/90 px-4 py-1.5 rounded-pill shadow-sm">Exact location provided after booking</span>
               </div>
             </div>
           </div>
 
           {/* 5. Right Column — Reservation Box (Image 2) */}
           <div className="sticky top-[calc(var(--header-height)+32px)] z-30" id="booking-widget">
-            <div className="border border-border rounded-2xl p-6 shadow-xl bg-white">
+            <div className="border border-border rounded-2xl p-6 shadow-xl bg-bg-primary">
               {/* Top line: price and rating */}
               <div className="flex justify-between items-baseline mb-6">
                 <div>
@@ -355,15 +355,15 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                   <div className="text-sm font-semibold flex items-center gap-1 text-text-primary">
                     <span>★ {formatRating(listing.rating)}</span>
                     <span>·</span>
-                    <a href="#reviews" className="underline text-text-secondary hover:text-black">{listing.review_count} {pluralize(listing.review_count, "review")}</a>
+                    <a href="#reviews" className="underline text-text-secondary hover:text-text-primary">{listing.review_count} {pluralize(listing.review_count, "review")}</a>
                   </div>
                 )}
               </div>
 
               {/* Date/Guest Box matching Image 2 */}
-              <div className="border border-gray-400 rounded-xl mb-4 overflow-hidden shadow-xs">
-                <div className="grid grid-cols-2 border-b border-gray-400">
-                  <div className="p-3 border-r border-gray-400 focus-within:bg-gray-50">
+              <div className="border border-border-dark rounded-xl mb-4 overflow-hidden shadow-xs">
+                <div className="grid grid-cols-2 border-b border-border-dark">
+                  <div className="p-3 border-r border-border-dark focus-within:bg-bg-secondary">
                     <label className="block text-[10px] font-extrabold uppercase tracking-wider text-text-primary mb-1">CHECK-IN</label>
                     <input
                       type="date"
@@ -373,7 +373,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                       className="w-full border-none outline-none text-sm bg-transparent text-text-primary font-semibold p-0 cursor-pointer"
                     />
                   </div>
-                  <div className="p-3 focus-within:bg-gray-50">
+                  <div className="p-3 focus-within:bg-bg-secondary">
                     <label className="block text-[10px] font-extrabold uppercase tracking-wider text-text-primary mb-1">CHECKOUT</label>
                     <input
                       type="date"
@@ -384,7 +384,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                     />
                   </div>
                 </div>
-                <div className="p-3 focus-within:bg-gray-50">
+                <div className="p-3 focus-within:bg-bg-secondary">
                   <label className="block text-[10px] font-extrabold uppercase tracking-wider text-text-primary mb-1">GUESTS</label>
                   <select
                     value={guests}
@@ -462,8 +462,8 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                   <span>{cat.label}</span>
                 </div>
                 <div className="flex items-center gap-3 w-40">
-                  <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-black rounded-full" style={{ width: `${(cat.avg / 5) * 100}%` }} />
+                  <div className="flex-1 h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+                    <div className="h-full bg-text-primary rounded-full" style={{ width: `${(cat.avg / 5) * 100}%` }} />
                   </div>
                   <span className="font-bold w-7 text-right text-text-primary">{cat.avg.toFixed(1)}</span>
                 </div>
@@ -479,8 +479,8 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                 onClick={() => setActiveReviewTab(chip)}
                 className={`px-4 py-2 rounded-pill text-sm font-semibold transition-all cursor-pointer ${
                   activeReviewTab === chip
-                    ? "bg-black text-white border border-black shadow-sm"
-                    : "bg-white text-text-primary border border-border hover:border-black"
+                    ? "bg-text-primary text-bg-primary border border-text-primary shadow-sm"
+                    : "bg-bg-primary text-text-primary border border-border hover:border-text-primary"
                 }`}
               >
                 {chip}
@@ -491,7 +491,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
           {/* Review Cards Grid (Image 1) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             {reviews.map((review) => (
-              <div key={review.id} className="p-6 rounded-2xl border border-border bg-white shadow-xs flex flex-col justify-between">
+              <div key={review.id} className="p-6 rounded-2xl border border-border bg-bg-primary shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <img src={review.user.avatar_url} alt={review.user.name} className="w-12 h-12 rounded-full object-cover border border-border" />
@@ -502,18 +502,18 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                   </div>
                   <div className="text-sm font-bold text-text-primary mb-2 flex items-center gap-1">
                     <span className="text-amber-500">{"★".repeat(Math.round(review.rating))}</span>
-                    <span className="text-gray-300">{"★".repeat(5 - Math.round(review.rating))}</span>
+                    <span className="text-border-dark">{"★".repeat(5 - Math.round(review.rating))}</span>
                     <span className="ml-1 text-xs text-text-secondary">· Verified stay</span>
                   </div>
                   <p className="text-sm leading-relaxed text-text-primary mb-4">{review.comment}</p>
                 </div>
-                <span className="text-xs font-semibold underline text-text-primary cursor-pointer hover:text-black">Show more ›</span>
+                <span className="text-xs font-semibold underline text-text-primary cursor-pointer hover:text-text-primary">Show more ›</span>
               </div>
             ))}
           </div>
 
           {/* Show all reviews outline button (Image 1) */}
-          <button className="px-6 py-3 border border-black rounded-lg font-bold text-sm hover:bg-bg-secondary transition-colors cursor-pointer bg-white text-text-primary">
+          <button className="px-6 py-3 border border-text-primary rounded-lg font-bold text-sm hover:bg-bg-secondary transition-colors cursor-pointer bg-bg-primary text-text-primary">
             Show all {listing.review_count || reviews.length} reviews
           </button>
         </div>

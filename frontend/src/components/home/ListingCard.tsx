@@ -90,7 +90,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
     <Link href={`/listings/${listing.id}`} className="block text-decoration-none text-inherit group relative" id={`listing-card-${listing.id}`}>
       {/* Floating include fees badge if requested */}
       {showIncludeFeesBadge && (
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 bg-white shadow-md border border-border px-3 py-1 rounded-pill flex items-center gap-1.5 text-xs font-bold whitespace-nowrap">
+        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 bg-bg-primary shadow-md border border-border px-3 py-1 rounded-pill flex items-center gap-1.5 text-xs font-bold whitespace-nowrap">
           <span className="text-primary text-sm">💎</span>
           <span>Prices include all fees</span>
         </div>
@@ -113,7 +113,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
           <>
             {currentImage > 0 && (
               <button
-                className="absolute top-1/2 -translate-y-1/2 left-2 w-7 h-7 rounded-full bg-white/90 border-none cursor-pointer text-base flex items-center justify-center opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-white hover:scale-105 shadow-sm z-10 text-text-primary"
+                className="absolute top-1/2 -translate-y-1/2 left-2 w-7 h-7 rounded-full bg-bg-primary/90 border-none cursor-pointer text-base flex items-center justify-center opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-bg-primary hover:scale-105 shadow-sm z-10 text-text-primary"
                 onClick={prevImage}
                 aria-label="Previous image"
               >
@@ -122,7 +122,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
             )}
             {currentImage < images.length - 1 && (
               <button
-                className="absolute top-1/2 -translate-y-1/2 right-2 w-7 h-7 rounded-full bg-white/90 border-none cursor-pointer text-base flex items-center justify-center opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-white hover:scale-105 shadow-sm z-10 text-text-primary"
+                className="absolute top-1/2 -translate-y-1/2 right-2 w-7 h-7 rounded-full bg-bg-primary/90 border-none cursor-pointer text-base flex items-center justify-center opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-bg-primary hover:scale-105 shadow-sm z-10 text-text-primary"
                 onClick={nextImage}
                 aria-label="Next image"
               >
@@ -146,7 +146,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
         <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
           {isOriginal && (
             <button
-              className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-text-primary hover:scale-105 transition-transform"
+              className="w-8 h-8 rounded-full bg-bg-primary/80 backdrop-blur-sm flex items-center justify-center text-text-primary hover:scale-105 transition-transform"
               onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
               title="Share"
             >
@@ -173,7 +173,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
 
         {/* Top Left Badge (`Guest favourite`, `Sat · 9:15 am`, `Original`) */}
         {activeBadge && (
-          <div className="absolute top-3 left-3 bg-white px-3 py-1 rounded-pill text-xs font-bold shadow-sm z-10 flex items-center gap-1 text-text-primary">
+          <div className="absolute top-3 left-3 bg-bg-primary px-3 py-1 rounded-pill text-xs font-bold shadow-sm z-10 flex items-center gap-1 text-text-primary">
             {isOriginal && <span className="text-[10px]">✎</span>}
             <span>{activeBadge}</span>
           </div>
@@ -194,7 +194,7 @@ export default function ListingCard({ listing, onWishlistChange, badgeText, show
         </div>
         <div className="text-sm text-text-secondary mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
           {isService
-            ? `From ${formatPrice(listing.price_per_night, listing.country)} / ${listing.max_guests > 5 ? "group" : "guest"}`
+            ? `From ${formatPrice(listing.price_per_night, listing.country)} / ${((listing as any).max_guests ?? 0) > 5 ? "group" : "guest"}`
             : isExperience
             ? `Hosted in ${listing.city}`
             : isOriginal
