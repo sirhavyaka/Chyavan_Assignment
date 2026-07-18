@@ -173,8 +173,8 @@ class ListingDetail(BaseModel):
 # ---------- Booking ----------
 class BookingCreate(BaseModel):
     listing_id: int
-    check_in: str  # YYYY-MM-DD
-    check_out: str  # YYYY-MM-DD
+    check_in: str
+    check_out: str
     guests: int = 1
 
 

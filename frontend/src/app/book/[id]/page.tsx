@@ -214,7 +214,7 @@ function BookingContent({ id }: { id: string }) {
           </div>
           <hr className="divider" />
           <div className="flex justify-between text-base font-semibold">
-            <span>Total (USD)</span>
+            <span>Total (INR)</span>
             <span>{formatPrice(totalPrice)}</span>
           </div>
         </div>

@@ -57,7 +57,7 @@ def require_auth(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
     db: Session = Depends(get_db),
 ) -> User:
-    """Requires authentication — raises 401 if not authenticated."""
+    """Requires authentication"""
     if credentials is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

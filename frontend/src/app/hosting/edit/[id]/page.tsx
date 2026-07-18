@@ -213,7 +213,7 @@ function EditListingContent({ id }: { id: string }) {
 
         {/* Pricing */}
         <section>
-          <h2 className="text-xl font-semibold mb-4 pb-2 border-b border-border">2. Pricing ($ USD)</h2>
+          <h2 className="text-xl font-semibold mb-4 pb-2 border-b border-border">2. Pricing (INR)</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="input-group">
               <label>Price per night *</label>

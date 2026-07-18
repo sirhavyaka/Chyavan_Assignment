@@ -14,7 +14,7 @@ from app.services.auth_service import hash_password
 def seed_database(db: Session):
     """Seed the database with sample data if it's empty."""
     if db.query(User).first():
-        return  # Already seeded
+        return
 
     # ==================== USERS ====================
     users = [
@@ -116,7 +116,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[0],  # Alice
+            "host": users[0],
             "title": "Cozy Mountain Cabin with Hot Tub",
             "description": "Escape to this charming log cabin nestled in the mountains. Enjoy stunning panoramic views from the wraparound deck while soaking in the private hot tub under the stars. The interior features rustic wood finishes, a stone fireplace, and modern amenities.\n\nPerfect for couples or small families seeking a peaceful mountain retreat. Hiking trails start right from the front door, and the ski resort is just 15 minutes away.",
             "property_type": "Entire home",
@@ -145,7 +145,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[1],  # Bob
+            "host": users[1],
             "title": "Modern Loft in Downtown Manhattan",
             "description": "Stylish industrial loft in the heart of SoHo. This beautifully designed space features exposed brick walls, 16-foot ceilings, oversized windows flooding the space with natural light, and curated contemporary art throughout.\n\nSteps from the best restaurants, galleries, and boutiques in New York City. The loft includes a chef's kitchen with premium appliances, a dedicated workspace, and a luxurious rainfall shower.",
             "property_type": "Entire home",
@@ -174,7 +174,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[0],  # Alice
+            "host": users[0],
             "title": "Luxury Treehouse Retreat",
             "description": "Live among the treetops in this architectural marvel. This luxury treehouse sits 40 feet above the forest floor, offering a truly unique experience. Features include a glass-bottom observation area, outdoor rain shower, and a private suspension bridge connecting to a meditation deck.\n\nSurrounded by ancient redwoods, this is the ultimate nature escape without sacrificing comfort. Heated floors, premium bedding, and a gourmet kitchenette ensure a pampered stay.",
             "property_type": "Entire home",
@@ -203,7 +203,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[1],  # Bob
+            "host": users[1], 
             "title": "Lakeside Cottage with Private Dock",
             "description": "Charming lakeside cottage with your own private dock and canoe. Wake up to misty mornings over the lake, enjoy fishing right from the dock, or take the canoe out for a sunset paddle.\n\nThe cottage has been lovingly renovated with a modern farmhouse aesthetic — shiplap walls, a farmhouse sink, and cozy reading nooks. The screened-in porch is perfect for evening gatherings with the sound of loons in the background.",
             "property_type": "Entire home",
@@ -232,7 +232,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[0],  # Alice
+            "host": users[0],
             "title": "Desert Dome Under the Stars",
             "description": "Experience the magic of the desert in this geodesic dome with a transparent ceiling for stargazing. Located on 5 acres of pristine desert landscape, this unique stay offers unobstructed views of the Milky Way.\n\nThe dome features a king bed, climate control, an outdoor soaking tub, and a fire pit area. The nearest town is 20 minutes away, ensuring complete peace and solitude. Solar-powered and eco-friendly.",
             "property_type": "Entire home",
@@ -261,7 +261,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[1],  # Bob
+            "host": users[1],
             "title": "Historic Countryside Manor",
             "description": "Step back in time at this meticulously restored 18th-century manor house. Set on 30 acres of rolling countryside, this estate features formal gardens, a working vineyard, and breathtaking views.\n\nEach of the five bedrooms has been individually decorated with period antiques and modern comforts. The grand dining room seats 12, and the library houses over 2,000 volumes. Afternoon tea on the terrace is an experience not to be missed.",
             "property_type": "Entire home",
@@ -290,7 +290,7 @@ def seed_database(db: Session):
             ],
         },
         {
-            "host": users[0],  # Alice
+            "host": users[0],
             "title": "Stunning Cliffside Villa in Santorini",
             "description": "Perched on the caldera cliffs of Oia, this whitewashed villa offers iconic Santorini views. Watch the world-famous sunset from your private terrace while enjoying a glass of local wine.\n\nThe villa features traditional Cycladic architecture with modern luxury — a private plunge pool, outdoor dining area, and interiors decorated with local art. Two bedrooms with en-suite bathrooms provide comfort and privacy.",
             "property_type": "Entire home",
