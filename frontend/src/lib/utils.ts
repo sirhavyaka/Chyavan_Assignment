@@ -5,7 +5,15 @@
 /**
  * Format a price number as currency string.
  */
-export function formatPrice(amount: number): string {
+export function formatPrice(amount: number, currencyOrCountry?: string): string {
+  if (currencyOrCountry === "INR" || currencyOrCountry === "India" || (amount > 1000 && !currencyOrCountry)) {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  }
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",

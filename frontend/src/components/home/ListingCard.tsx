@@ -11,9 +11,11 @@ import api from "@/lib/api";
 interface Props {
   listing: ListingCardType;
   onWishlistChange?: () => void;
+  badgeText?: string;
+  showIncludeFeesBadge?: boolean;
 }
 
-export default function ListingCard({ listing, onWishlistChange }: Props) {
+export default function ListingCard({ listing, onWishlistChange, badgeText, showIncludeFeesBadge }: Props) {
   const [currentImage, setCurrentImage] = useState(0);
   const [wishlisted, setWishlisted] = useState(listing.is_wishlisted);
   const { isAuthenticated } = useAuth();
@@ -52,10 +54,29 @@ export default function ListingCard({ listing, onWishlistChange }: Props) {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const isExperience = listing.category === "Experiences" || listing.property_type === "Experience";
+  const isOriginal = listing.category === "Originals" || listing.property_type === "Original";
+
+  // Determine top-left badge
+  let activeBadge = badgeText;
+  if (!activeBadge) {
+    if (isOriginal) activeBadge = "Original";
+    else if (isExperience) activeBadge = "Sat · 9:15 am";
+    else if (listing.is_guest_favorite) activeBadge = "Guest favourite";
+  }
+
   return (
-    <Link href={`/listings/${listing.id}`} className="block text-decoration-none text-inherit group" id={`listing-card-${listing.id}`}>
+    <Link href={`/listings/${listing.id}`} className="block text-decoration-none text-inherit group relative" id={`listing-card-${listing.id}`}>
+      {/* Floating include fees badge if requested */}
+      {showIncludeFeesBadge && (
+        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 bg-white shadow-md border border-border px-3 py-1 rounded-pill flex items-center gap-1.5 text-xs font-bold whitespace-nowrap">
+          <span className="text-primary text-sm">💎</span>
+          <span>Prices include all fees</span>
+        </div>
+      )}
+
       {/* Image Carousel */}
-      <div className="relative aspect-[1/0.95] rounded-xl overflow-hidden bg-bg-secondary">
+      <div className="relative aspect-[1/0.95] rounded-2xl overflow-hidden bg-bg-secondary">
         <img
           src={images[currentImage].url}
           alt={listing.title}
@@ -97,48 +118,80 @@ export default function ListingCard({ listing, onWishlistChange }: Props) {
           </>
         )}
 
-        {/* Wishlist Heart */}
-        <button
-          className="absolute top-2.5 right-2.5 bg-transparent border-none cursor-pointer z-10 transition-transform active:scale-90 hover:scale-110"
-          onClick={handleWishlist}
-          aria-label="Save to wishlist"
-        >
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-            <path
-              d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05A6.98 6.98 0 0 0 9 4a6.98 6.98 0 0 0-7 7c0 7 7 12.27 14 17z"
-              fill={wishlisted ? "#FF385C" : "rgba(0,0,0,0.5)"}
-              stroke="white"
-              strokeWidth="2"
-            />
-          </svg>
-        </button>
+        {/* Top Right Action Icons */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
+          {isOriginal && (
+            <button
+              className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-text-primary hover:scale-105 transition-transform"
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+              title="Share"
+            >
+              <svg viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9M16 3v18M9 10l7-7 7 7" />
+              </svg>
+            </button>
+          )}
+          <button
+            className="bg-transparent border-none cursor-pointer transition-transform active:scale-90 hover:scale-110"
+            onClick={handleWishlist}
+            aria-label="Save to wishlist"
+          >
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              <path
+                d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05A6.98 6.98 0 0 0 9 4a6.98 6.98 0 0 0-7 7c0 7 7 12.27 14 17z"
+                fill={wishlisted ? "#FF385C" : "rgba(0,0,0,0.5)"}
+                stroke="white"
+                strokeWidth="2"
+              />
+            </svg>
+          </button>
+        </div>
 
-        {/* Guest Favorite Badge */}
-        {listing.is_guest_favorite && (
-          <div className="absolute top-2.5 left-2.5 bg-white px-2.5 py-1 rounded-pill text-xs font-bold shadow-sm z-10">
-            <span>Guest favorite</span>
+        {/* Top Left Badge (`Guest favourite`, `Sat · 9:15 am`, `Original`) */}
+        {activeBadge && (
+          <div className="absolute top-3 left-3 bg-white px-3 py-1 rounded-pill text-xs font-bold shadow-sm z-10 flex items-center gap-1 text-text-primary">
+            {isOriginal && <span className="text-[10px]">✎</span>}
+            <span>{activeBadge}</span>
           </div>
         )}
       </div>
 
-      {/* Info */}
-      <div className="pt-2.5">
+      {/* Info Details */}
+      <div className="pt-3">
         <div className="flex justify-between items-center gap-2">
-          <span className="text-sm font-semibold text-text-primary whitespace-nowrap overflow-hidden text-ellipsis">
-            {formatLocation(listing.city, listing.state, listing.country)}
+          <span className="text-sm font-bold text-text-primary whitespace-nowrap overflow-hidden text-ellipsis">
+            {isExperience ? listing.title : isOriginal ? listing.title : formatLocation(listing.city, listing.state, listing.country)}
           </span>
           {listing.rating > 0 && (
-            <span className="text-sm font-normal text-text-primary shrink-0 flex items-center gap-0.5">
+            <span className="text-sm font-semibold text-text-primary shrink-0 flex items-center gap-1">
               ★ {formatRating(listing.rating)}
             </span>
           )}
         </div>
         <div className="text-sm text-text-secondary mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
-          {listing.title}
+          {isExperience
+            ? `Hosted in ${listing.city}`
+            : isOriginal
+            ? "Hosted by the world's most interesting people"
+            : listing.title}
         </div>
-        <div className="mt-1">
-          <span className="text-sm font-semibold">{formatPrice(listing.price_per_night)}</span>
-          <span className="text-sm text-text-secondary"> night</span>
+        <div className="mt-1 flex items-baseline gap-1">
+          {isExperience ? (
+            <>
+              <span className="text-sm font-bold text-text-primary">From {formatPrice(listing.price_per_night, listing.country)}</span>
+              <span className="text-sm text-text-secondary">/ guest</span>
+            </>
+          ) : isOriginal ? (
+            <>
+              <span className="text-sm font-bold text-text-primary">{formatPrice(listing.price_per_night, listing.country)}</span>
+              <span className="text-sm text-text-secondary">/ night</span>
+            </>
+          ) : (
+            <>
+              <span className="text-sm font-bold text-text-primary">{formatPrice(listing.price_per_night * 2, listing.country)}</span>
+              <span className="text-sm text-text-secondary">for 2 nights</span>
+            </>
+          )}
         </div>
       </div>
     </Link>
