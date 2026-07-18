@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Airbnb | Holiday rentals, cabins, beach houses & more",
-  description: "Find unique places to stay with local hosts around the world. Book vacation rentals, apartments, and more on Stayscape.",
+  description: "Find unique places to stay with local hosts around the world. Book vacation rentals, apartments, and more on Airbnb.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

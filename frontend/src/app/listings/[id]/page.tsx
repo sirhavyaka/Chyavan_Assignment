@@ -421,7 +421,7 @@ export default function ListingDetailPage({ params }: { params: Promise<{ id: st
                   <span>{formatPrice(cleaningFee, listing.country)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="underline">Stayscape service fee</span>
+                  <span className="underline">Airbnb service fee</span>
                   <span>{formatPrice(serviceFee, listing.country)}</span>
                 </div>
                 <hr className="border-t border-border my-4" />

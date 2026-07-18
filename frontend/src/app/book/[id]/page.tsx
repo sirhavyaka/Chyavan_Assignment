@@ -209,7 +209,7 @@ function BookingContent({ id }: { id: string }) {
             <span>{formatPrice(cleaningFee)}</span>
           </div>
           <div className="flex justify-between text-base mb-3">
-            <span>Stayscape service fee</span>
+            <span>Airbnb service fee</span>
             <span>{formatPrice(serviceFee)}</span>
           </div>
           <hr className="divider" />

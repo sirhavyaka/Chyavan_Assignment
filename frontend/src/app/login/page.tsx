@@ -39,7 +39,7 @@ function LoginContent() {
     try {
       if (mode === "register") {
         await register(email, name, password);
-        showToast("Welcome to Stayscape! 🎉", "success");
+        showToast("Welcome to Airbnb! 🎉", "success");
       } else {
         await login(email, password);
         showToast("Welcome back!", "success");
@@ -57,7 +57,7 @@ function LoginContent() {
       <div className="w-full max-w-[440px] border border-border rounded-xl overflow-hidden shadow-sm bg-bg-primary">
         <div className="px-6 pt-6 pb-2 text-center border-b border-border">
           <h1 className="text-xl font-semibold mb-1">{mode === "login" ? "Log in" : "Sign up"}</h1>
-          <p className="text-sm text-text-secondary pb-4">Welcome to Stayscape</p>
+          <p className="text-sm text-text-secondary pb-4">Welcome to Airbnb</p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-4">
